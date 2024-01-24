@@ -1,0 +1,195 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-weight: inherit;
+  font-family: Open sans regular;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+:root {
+  --color: #1abc9c;
+  font-size: 16px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+  }
+}
+
+body {
+  overflow-x: hidden;
+
+  &.light {
+    --color: #111;
+    --background: #fff;
+  }
+
+  &.dark {
+    --color: #fff;
+    --background: #111;
+  }
+}
+
+.title {
+  font-size: 16px;
+  font-family: Open sans light;
+}
+
+.section {
+  width: 100vw;
+  padding-inline: 50px;
+
+  @media screen and (max-width: 768px) {
+    padding-inline: 1rem;
+  }
+}
+
+.transition {
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+
+  .transition-section {
+    height: 100vh;
+    background: #111;
+  }
+}
+
+table thead tr td {
+  font-family: Open sans regular;
+  background: var(--color);
+  color: white;
+  padding-block: 15px;
+}
+
+table {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  overflow: scroll;
+}
+
+table tr {
+  display: flex;
+}
+
+table tbody tr:nth-child(even) {
+  background: rgb(240, 240, 240);
+}
+
+td {
+  font-size: 14px;
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+}
+
+.page {
+  margin-left: 300px;
+  padding: 20px;
+  width: calc(100vw - 300px);
+
+  .title {
+    margin-bottom: 1rem;
+  }
+
+  table {
+    width: 100%;
+  }
+}
+
+@font-face {
+  font-family: Open sans regular;
+  src: url(./fonts/OpenSans-Regular.ttf);
+}
+
+@font-face {
+  font-family: Open sans extrabold;
+  src: url(./fonts/OpenSans-ExtraBold.ttf);
+}
+
+@font-face {
+  font-family: Open sans bold;
+  src: url(./fonts/OpenSans-Bold.ttf);
+}
+
+@font-face {
+  font-family: Open sans condensed bold;
+  src: url(./fonts/OpenSans_Condensed-Bold.ttf);
+}
+
+@font-face {
+  font-family: Open sans semibold;
+  src: url(./fonts/OpenSans-SemiBold.ttf);
+}
+
+.modal-form {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.539);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .form {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    position: relative;
+
+    .title {
+      font-family: Open sans regular;
+      font-size: 1.3rem;
+      margin-top: 10px;
+    }
+
+    .close-icon {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      height: 1rem;
+      width: auto;
+      cursor: pointer;
+    }
+  }
+}
+
+.btn {
+  display: flex;
+  padding: 5px 14px;
+  border-radius: 5px;
+  font-size: 12px;
+  background: #111;
+  color: white;
+  width: fit-content;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn.btn-modify {
+  background: #40739e;
+}
+
+.btn.btn-add {
+  background: #16a085;
+}
+
+.btn.btn-details {
+  background: #7f8c8d;
+}
