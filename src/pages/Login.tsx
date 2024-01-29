@@ -27,10 +27,11 @@ const Login = () => {
     fetch(`${url}/auth/authenticate_admin`, requestOptions)
       .then((response) => response.json())
       .then((response) => {
-        const { data, token } = response;
+        const { data } = response;
         if (data == null) {
           setMessage("Erreur lors de la connexion.");
         } else {
+          const { token } = data;
           sessionStorage.setItem(storage.token, token);
           navigate("/dashboard");
         }

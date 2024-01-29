@@ -11,6 +11,7 @@ const BrandRow: FunctionComponent<Brand> = ({ id, nom, state }) => {
     <tr>
       <td width="100px">{id}</td>
       <td width="250px">{nom}</td>
+      <td width="250px">{state}</td>
     </tr>
   );
 };

@@ -11,6 +11,7 @@ import Maintain from "./pages/Maintain";
 import Color from "./pages/Color";
 import { AnimatePresence } from "framer-motion";
 import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   const location = useLocation();
@@ -21,6 +22,7 @@ function App() {
       <AnimatePresence mode="wait" initial={false}>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/category" element={<Category />} />
           <Route path="/color" element={<Color />} />
           <Route path="/type" element={<Type />} />

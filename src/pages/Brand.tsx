@@ -50,7 +50,7 @@ const Brands: FunctionComponent = () => {
         setData(response.data);
         setLoaded(true);
       });
-  }, [activePage]);
+  }, [activePage, page]);
 
   return (
     <>
@@ -63,6 +63,7 @@ const Brands: FunctionComponent = () => {
               <tr>
                 <td width="100px">Id</td>
                 <td width="250px">Nom</td>
+                <td width="250px">Etat</td>
               </tr>
             </thead>
             <tbody>
@@ -104,6 +105,7 @@ const Brands: FunctionComponent = () => {
               onClose={() => {
                 setPage("list");
               }}
+              setPage={setPage}
             />
           )}
         </AnimatePresence>
