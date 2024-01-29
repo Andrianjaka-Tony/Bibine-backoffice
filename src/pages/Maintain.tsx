@@ -3,6 +3,7 @@ import url from "../helper/api";
 import MaintainRow, { Maintain } from "../components/maintain/row/MaintainRow";
 import { AnimatePresence } from "framer-motion";
 import MaintainPostForm from "../components/maintain/post-form/EnginePostForm";
+import Transition from "../components/transition/Transition";
 
 interface Response {
   data: Maintain[];
@@ -52,59 +53,62 @@ const Maintains: FunctionComponent = () => {
   }, [activePage]);
 
   return (
-    <div className="page">
-      <h1 className="title">Liste des entretiens</h1>
-      {loaded && (
-        <table>
-          <thead>
-            <tr>
-              <td width="100px">Id</td>
-              <td width="350px">Nom</td>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((maintain) => (
-              <MaintainRow {...maintain} key={maintain.id} />
-            ))}
-          </tbody>
-        </table>
-      )}
-      <div className="pagination">
-        {arrayPages.map((item, index) => (
-          <div
-            key={index}
-            className={
-              activePage === index + 1
-                ? "pagination-btn active-page"
-                : "pagination-btn"
-            }
-            onClick={() => {
-              switchPage(index + 1);
-            }}
-          >
-            {index + 1}
-          </div>
-        ))}
-      </div>
-      <button
-        onClick={() => {
-          setPage("add-form");
-        }}
-        style={{ marginTop: "10px" }}
-        className="btn btn-add"
-      >
-        Ajouter
-      </button>
-      <AnimatePresence>
-        {page === "add-form" && (
-          <MaintainPostForm
-            onClose={() => {
-              setPage("list");
-            }}
-          />
+    <>
+      <Transition />
+      <div className="page">
+        <h1 className="title">Liste des entretiens</h1>
+        {loaded && (
+          <table>
+            <thead>
+              <tr>
+                <td width="100px">Id</td>
+                <td width="350px">Nom</td>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((maintain) => (
+                <MaintainRow {...maintain} key={maintain.id} />
+              ))}
+            </tbody>
+          </table>
         )}
-      </AnimatePresence>
-    </div>
+        <div className="pagination">
+          {arrayPages.map((item, index) => (
+            <div
+              key={index}
+              className={
+                activePage === index + 1
+                  ? "pagination-btn active-page"
+                  : "pagination-btn"
+              }
+              onClick={() => {
+                switchPage(index + 1);
+              }}
+            >
+              {index + 1}
+            </div>
+          ))}
+        </div>
+        <button
+          onClick={() => {
+            setPage("add-form");
+          }}
+          style={{ marginTop: "10px" }}
+          className="btn btn-add"
+        >
+          Ajouter
+        </button>
+        <AnimatePresence>
+          {page === "add-form" && (
+            <MaintainPostForm
+              onClose={() => {
+                setPage("list");
+              }}
+            />
+          )}
+        </AnimatePresence>
+      </div>
+    </>
   );
 };
 

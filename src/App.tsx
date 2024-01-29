@@ -14,16 +14,11 @@ import { AnimatePresence } from "framer-motion";
 function App() {
   const location = useLocation();
 
-  const routeProps = {
-    location,
-    key: location.pathname,
-  };
-
   return (
     <>
       <Sidebar />
       <AnimatePresence mode="wait">
-        <Routes {...routeProps}>
+        <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Navigate to={"/dashboard"} />} />
           <Route path="/category" element={<Category />} />
           <Route path="/color" element={<Color />} />

@@ -17,7 +17,7 @@ const ColorPostForm: FunctionComponent<Props> = ({ onClose }) => {
       className="modal-form"
     >
       <form className="form">
-        <h1 className="title">Ajouter une catégorie</h1>
+        <h1 className="title">Ajouter une couleur</h1>
         <div style={{ marginTop: "10px" }} className="input">
           <label htmlFor="name-input">Nom</label>
           <input

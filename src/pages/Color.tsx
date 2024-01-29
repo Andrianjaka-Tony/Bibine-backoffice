@@ -3,6 +3,7 @@ import url from "../helper/api";
 import { AnimatePresence } from "framer-motion";
 import ColorRow, { Color } from "../components/color/row/ColorRow";
 import ColorPostForm from "../components/color/post-form/ColorPostForm";
+import Transition from "../components/transition/Transition";
 
 interface Response {
   data: Color[];
@@ -52,59 +53,62 @@ const Colors: FunctionComponent = () => {
   }, [activePage]);
 
   return (
-    <div className="page">
-      <h1 className="title">Liste des marques</h1>
-      {loaded && (
-        <table>
-          <thead>
-            <tr>
-              <td width="100px">Id</td>
-              <td width="250px">Nom</td>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((color) => (
-              <ColorRow {...color} key={color.id} />
-            ))}
-          </tbody>
-        </table>
-      )}
-      <div className="pagination">
-        {arrayPages.map((item, index) => (
-          <div
-            key={index}
-            className={
-              activePage === index + 1
-                ? "pagination-btn active-page"
-                : "pagination-btn"
-            }
-            onClick={() => {
-              switchPage(index + 1);
-            }}
-          >
-            {index + 1}
-          </div>
-        ))}
-      </div>
-      <button
-        onClick={() => {
-          setPage("add-form");
-        }}
-        style={{ marginTop: "10px" }}
-        className="btn btn-add"
-      >
-        Ajouter
-      </button>
-      <AnimatePresence>
-        {page === "add-form" && (
-          <ColorPostForm
-            onClose={() => {
-              setPage("list");
-            }}
-          />
+    <>
+      <Transition />
+      <div className="page">
+        <h1 className="title">Liste des couleurs</h1>
+        {loaded && (
+          <table>
+            <thead>
+              <tr>
+                <td width="100px">Id</td>
+                <td width="250px">Nom</td>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((color) => (
+                <ColorRow {...color} key={color.id} />
+              ))}
+            </tbody>
+          </table>
         )}
-      </AnimatePresence>
-    </div>
+        <div className="pagination">
+          {arrayPages.map((item, index) => (
+            <div
+              key={index}
+              className={
+                activePage === index + 1
+                  ? "pagination-btn active-page"
+                  : "pagination-btn"
+              }
+              onClick={() => {
+                switchPage(index + 1);
+              }}
+            >
+              {index + 1}
+            </div>
+          ))}
+        </div>
+        <button
+          onClick={() => {
+            setPage("add-form");
+          }}
+          style={{ marginTop: "10px" }}
+          className="btn btn-add"
+        >
+          Ajouter
+        </button>
+        <AnimatePresence>
+          {page === "add-form" && (
+            <ColorPostForm
+              onClose={() => {
+                setPage("list");
+              }}
+            />
+          )}
+        </AnimatePresence>
+      </div>
+    </>
   );
 };
 
