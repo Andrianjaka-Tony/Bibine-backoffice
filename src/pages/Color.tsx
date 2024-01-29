@@ -1,22 +1,22 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import url from "../helper/api";
-import EngineRow, { Engine } from "../components/engine/row/EngineRow";
 import { AnimatePresence } from "framer-motion";
-import EnginePostForm from "../components/engine/post-form/EnginePostForm";
+import ColorRow, { Color } from "../components/color/row/ColorRow";
+import ColorPostForm from "../components/color/post-form/ColorPostForm";
 
 interface Response {
-  data: Engine[];
+  data: Color[];
   status: {
     status: string;
     details: string;
   };
 }
 
-const Engines: FunctionComponent = () => {
+const Colors: FunctionComponent = () => {
   const limit = 10;
 
   const [loaded, setLoaded] = useState<boolean>(false);
-  const [data, setData] = useState<Engine[]>([]);
+  const [data, setData] = useState<Color[]>([]);
   const [page, setPage] = useState<string>("list");
   const [arrayPages, setArrayPages] = useState<string[]>([]);
   const [activePage, setActivePage] = useState<number>(1);
@@ -26,7 +26,7 @@ const Engines: FunctionComponent = () => {
   };
 
   useEffect(() => {
-    fetch(`${url}/bibine/actu/motors/pagination?limit=${limit}`)
+    fetch(`${url}/bibine/actu/colors/pagination?limit=${limit}`)
       .then((response) => response.json())
       .then((response) => {
         const array = [];
@@ -39,7 +39,7 @@ const Engines: FunctionComponent = () => {
 
   useEffect(() => {
     fetch(
-      `${url}/bibine/actu/pagination/motors?offset=${
+      `${url}/bibine/actu/pagination/colors?offset=${
         activePage - 1
       }&limit=${limit}`
     )
@@ -53,7 +53,7 @@ const Engines: FunctionComponent = () => {
 
   return (
     <div className="page">
-      <h1 className="title">Liste des moteurs</h1>
+      <h1 className="title">Liste des marques</h1>
       {loaded && (
         <table>
           <thead>
@@ -63,8 +63,8 @@ const Engines: FunctionComponent = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((engine) => (
-              <EngineRow {...engine} key={engine.id} />
+            {data.map((color) => (
+              <ColorRow {...color} key={color.id} />
             ))}
           </tbody>
         </table>
@@ -97,7 +97,7 @@ const Engines: FunctionComponent = () => {
       </button>
       <AnimatePresence>
         {page === "add-form" && (
-          <EnginePostForm
+          <ColorPostForm
             onClose={() => {
               setPage("list");
             }}
@@ -108,4 +108,4 @@ const Engines: FunctionComponent = () => {
   );
 };
 
-export default Engines;
+export default Colors;

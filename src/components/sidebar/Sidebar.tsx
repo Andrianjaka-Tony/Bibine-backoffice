@@ -2,18 +2,29 @@ import "./Sidebar.scss";
 import { FunctionComponent } from "react";
 import SidebarItem, { Item } from "./item/SidebarItem";
 
-import { FaCar } from "react-icons/fa";
+// import { FaCar } from "react-icons/fa";
 import { PiEngine } from "react-icons/pi";
 import { MdOutlineDashboard, MdOutlineAnnouncement } from "react-icons/md";
-import { GiFlatTire } from "react-icons/gi";
-import { TbManualGearbox, TbBrandCarbon } from "react-icons/tb";
+// import { GiFlatTire } from "react-icons/gi";
+import { TbBrandCarbon } from "react-icons/tb";
 import { CiSettings } from "react-icons/ci";
+import { IoIosColorFilter } from "react-icons/io";
 
 const items: Item[] = [
   {
     name: "Dashboard",
-    to: "/",
+    to: "/dashboard",
     icon: <MdOutlineDashboard />,
+  },
+  {
+    name: "Annonces",
+    to: "/announce",
+    icon: <MdOutlineAnnouncement />,
+  },
+  {
+    name: "Coleurs",
+    to: "/color",
+    icon: <IoIosColorFilter />,
   },
   {
     name: "Categories",
@@ -26,37 +37,32 @@ const items: Item[] = [
     icon: <MdOutlineDashboard />,
   },
   {
-    name: "Annonce",
-    to: "/announce",
-    icon: <MdOutlineAnnouncement />,
-  },
-  {
-    name: "Moteur",
+    name: "Moteurs",
     to: "/engine",
     icon: <PiEngine />,
   },
+  // {
+  //   name: "Jante",
+  //   to: "/rim",
+  //   icon: <GiFlatTire />,
+  // },
+  // {
+  //   name: "Transmission",
+  //   to: "/transmission",
+  //   icon: <TbManualGearbox />,
+  // },
   {
-    name: "Jante",
-    to: "/rim",
-    icon: <GiFlatTire />,
-  },
-  {
-    name: "Transmission",
-    to: "/transmission",
-    icon: <TbManualGearbox />,
-  },
-  {
-    name: "Marque",
+    name: "Marques",
     to: "/brand",
     icon: <TbBrandCarbon />,
   },
+  // {
+  //   name: "Modele de voiture",
+  //   to: "/model",
+  //   icon: <FaCar />,
+  // },
   {
-    name: "Modele de voiture",
-    to: "/model",
-    icon: <FaCar />,
-  },
-  {
-    name: "Entretien",
+    name: "Entretiens",
     to: "/maintain",
     icon: <CiSettings />,
   },

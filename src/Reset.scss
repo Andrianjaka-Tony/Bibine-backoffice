@@ -101,6 +101,7 @@ td {
 
   .title {
     margin-bottom: 1rem;
+    font-family: Open sans bold;
   }
 
   table {
@@ -192,4 +193,28 @@ td {
 
 .btn.btn-details {
   background: #7f8c8d;
+}
+
+.pagination {
+  display: flex;
+  margin-top: 10px;
+  display: flex;
+  gap: 5px;
+
+  .pagination-btn {
+    height: 30px;
+    width: 30px;
+    font-family: Open sans bold;
+    border: 1px black solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 4px;
+
+    &.active-page {
+      border-color: var(--color);
+      color: var(--color);
+    }
+  }
 }
