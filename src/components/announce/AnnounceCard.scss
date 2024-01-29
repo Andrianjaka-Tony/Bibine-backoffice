@@ -1,0 +1,78 @@
+.announce-card {
+  padding: 10px;
+
+  .announce-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .user {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .photo {
+        height: 35px;
+        width: 35px;
+      }
+
+      .name {
+        font-family: Open sans bold;
+      }
+    }
+
+    .price {
+      font-family: Open sans condensed bold;
+      font-size: 18px;
+    }
+  }
+
+  .announce-picture {
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  .announce-body {
+    padding: 0 10px;
+  }
+
+  .announce-brand {
+    font-family: Open sans bold;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+
+  .announce-model {
+    font-size: 16px;
+    margin-top: 5px;
+    font-family: Open sans light;
+  }
+
+  .announce-subtitle {
+    font-family: Open sans bold;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+
+  .announce-text {
+    font-size: 14px;
+    font-family: Open sans regular;
+    margin-top: 5px;
+  }
+
+  .announce-desc-container {
+    margin-top: 10px;
+  }
+
+  .announce-desc {
+    .label {
+      font-family: Open sans bold;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .value {
+      margin-top: 3px;
+    }
+  }
+}

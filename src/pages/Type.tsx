@@ -79,7 +79,7 @@ const Typez: FunctionComponent = () => {
     const fetchSellPerType = async () => {
       var response = await fetch(
         `${url}/bibine/statistique/type/sell`,
-        statFetchOptions
+        statFetchOptions()
       );
       response = await response.json();
       const responseData = response as any;
@@ -107,7 +107,7 @@ const Typez: FunctionComponent = () => {
     const fetchBestSellPerType = async () => {
       var response = await fetch(
         `${url}/bibine/statistique/type/sell`,
-        statFetchOptions
+        statFetchOptions()
       );
       response = await response.json();
       const responseData = response as any;

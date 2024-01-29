@@ -12,6 +12,7 @@ import Color from "./pages/Color";
 import { AnimatePresence } from "framer-motion";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import Announce from "./pages/Announce";
 
 function App() {
   const location = useLocation();
@@ -23,6 +24,7 @@ function App() {
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/announce" element={<Announce />} />
           <Route path="/category" element={<Category />} />
           <Route path="/color" element={<Color />} />
           <Route path="/type" element={<Type />} />

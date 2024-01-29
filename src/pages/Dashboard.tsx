@@ -30,7 +30,7 @@ const Dashboard = () => {
   const [loaded, setLoaded] = useState<boolean>(false);
 
   useEffect(() => {
-    fetch(`${url}/bibine/statistique/type/sell`, statFetchOptions)
+    fetch(`${url}/bibine/statistique/type/sell`, statFetchOptions())
       .then((response) => response.json())
       .then((response) => {
         console.log(response);
@@ -39,7 +39,7 @@ const Dashboard = () => {
     const fetchSellPerMonth = async () => {
       var response = await fetch(
         `${url}/bibine/statistique/transactions/sent`,
-        statFetchOptions
+        statFetchOptions()
       );
       response = await response.json();
       const responseData = response as any;
@@ -67,7 +67,7 @@ const Dashboard = () => {
     const fetchBuyRequestPerMonth = async () => {
       var response = await fetch(
         `${url}/bibine/statistique/purchases/sent`,
-        statFetchOptions
+        statFetchOptions()
       );
       response = await response.json();
       const responseData = response as any;
@@ -95,7 +95,7 @@ const Dashboard = () => {
     const fetchSellPerModel = async () => {
       var response = await fetch(
         `${url}/bibine/statistique/model/sell`,
-        statFetchOptions
+        statFetchOptions()
       );
       response = await response.json();
       const responseData = response as any;
@@ -123,7 +123,7 @@ const Dashboard = () => {
     const fetchBestSellPerModel = async () => {
       var response = await fetch(
         `${url}/bibine/statistique/model/sell`,
-        statFetchOptions
+        statFetchOptions()
       );
       response = await response.json();
       const responseData = response as any;

@@ -3,6 +3,7 @@ import "./Login.scss";
 import url from "../helper/api";
 import storage from "../helper/storage";
 import { useNavigate } from "react-router-dom";
+import Transition from "../components/transition/Transition";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -39,44 +40,47 @@ const Login = () => {
   };
 
   return (
-    <div className="login">
-      <form onSubmit={handleSubmit} className="login-form">
-        <div className="login-form-title">Connexion</div>
-        <div className="login-form-message">{message}</div>
-        <div style={{ marginTop: "10px" }} className="input">
-          <label htmlFor="email-input">Adresse e-mail</label>
+    <>
+      <Transition />
+      <div className="login">
+        <form onSubmit={handleSubmit} className="login-form">
+          <div className="login-form-title">Connexion</div>
+          <div className="login-form-message">{message}</div>
+          <div style={{ marginTop: "10px" }} className="input">
+            <label htmlFor="email-input">Adresse e-mail</label>
+            <input
+              type="email"
+              id="email-input"
+              name="email"
+              value={email}
+              onChange={(event) => {
+                setEmail(event.currentTarget.value);
+              }}
+              autoComplete="off"
+            />
+          </div>
+          <div style={{ marginTop: "10px" }} className="input">
+            <label htmlFor="password-input">Mot de passe</label>
+            <input
+              type="password"
+              id="password-input"
+              name="password"
+              value={password}
+              onChange={(event) => {
+                setPassword(event.currentTarget.value);
+              }}
+              autoComplete="off"
+            />
+          </div>
           <input
-            type="email"
-            id="email-input"
-            name="email"
-            value={email}
-            onChange={(event) => {
-              setEmail(event.currentTarget.value);
-            }}
-            autoComplete="off"
+            style={{ marginTop: "10px" }}
+            type="submit"
+            value="Connexion"
+            className="btn btn-add"
           />
-        </div>
-        <div style={{ marginTop: "10px" }} className="input">
-          <label htmlFor="password-input">Mot de passe</label>
-          <input
-            type="password"
-            id="password-input"
-            name="password"
-            value={password}
-            onChange={(event) => {
-              setPassword(event.currentTarget.value);
-            }}
-            autoComplete="off"
-          />
-        </div>
-        <input
-          style={{ marginTop: "10px" }}
-          type="submit"
-          value="Connexion"
-          className="btn btn-add"
-        />
-      </form>
-    </div>
+        </form>
+      </div>
+    </>
   );
 };
 

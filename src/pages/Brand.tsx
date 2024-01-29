@@ -79,7 +79,7 @@ const Brands: FunctionComponent = () => {
     const fetchSellPerBrand = async () => {
       var response = await fetch(
         `${url}/bibine/statistique/brand/sell`,
-        statFetchOptions
+        statFetchOptions()
       );
       response = await response.json();
       const responseData = response as any;
@@ -107,7 +107,7 @@ const Brands: FunctionComponent = () => {
     const fetchBestSellPerBrand = async () => {
       var response = await fetch(
         `${url}/bibine/statistique/brand/sell`,
-        statFetchOptions
+        statFetchOptions()
       );
       response = await response.json();
       const responseData = response as any;
