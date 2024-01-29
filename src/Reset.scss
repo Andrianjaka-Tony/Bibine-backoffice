@@ -218,3 +218,31 @@ td {
     }
   }
 }
+
+.graph {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+
+  &-container {
+    width: 35%;
+
+    .title {
+      font-size: 1rem;
+    }
+  }
+
+  .month-sell {
+    width: 100%;
+  }
+
+  .buy-request {
+    width: 55%;
+  }
+
+  .sell-per-item {
+    width: 100%;
+    margin-top: 60px;
+  }
+}

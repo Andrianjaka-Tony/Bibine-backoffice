@@ -1,9 +1,29 @@
+import {
+  LinearScale,
+  CategoryScale,
+  LineElement,
+  Chart,
+  PointElement,
+  BarElement,
+  ArcElement,
+} from "chart.js";
 import { FunctionComponent, useEffect, useState } from "react";
 import BrandRow, { Brand } from "../components/brand/row/BrandRow";
 import url from "../helper/api";
 import { AnimatePresence } from "framer-motion";
 import BrandPostForm from "../components/brand/post-form/BrandPostForm";
 import Transition from "../components/transition/Transition";
+import { Bar } from "react-chartjs-2";
+import { statFetchOptions } from "../helper/fetch";
+
+Chart.register(
+  LinearScale,
+  CategoryScale,
+  LineElement,
+  PointElement,
+  BarElement,
+  ArcElement
+);
 
 interface Response {
   data: Brand[];
@@ -21,6 +41,9 @@ const Brands: FunctionComponent = () => {
   const [page, setPage] = useState<string>("list");
   const [arrayPages, setArrayPages] = useState<string[]>([]);
   const [activePage, setActivePage] = useState<number>(1);
+  const [sellPerBrand, setSellPerBrand] = useState<any>([]);
+  const [bestSellPerBrand, setBestSellPerBrand] = useState<any>([]);
+  const [graphLoaded, setGraphLoaded] = useState<boolean>(false);
 
   const switchPage = (index: number) => {
     setActivePage(index);
@@ -51,6 +74,72 @@ const Brands: FunctionComponent = () => {
         setLoaded(true);
       });
   }, [activePage, page]);
+
+  useEffect(() => {
+    const fetchSellPerBrand = async () => {
+      var response = await fetch(
+        `${url}/bibine/statistique/brand/sell`,
+        statFetchOptions
+      );
+      response = await response.json();
+      const responseData = response as any;
+      const { data } = responseData;
+      setSellPerBrand({
+        labels: data.map((d: any) => d.label),
+        datasets: [
+          {
+            label: "Sales Data",
+            backgroundColor: [
+              "rgba(75, 192, 192, 0.2)",
+              "#f49090a1",
+              "#2e99a099",
+              "#018a00d9",
+              "#e97123a1",
+            ],
+            borderColor: "rgba(75, 192, 192, 1)",
+            borderWidth: 1,
+            data: data.map((d: any) => d.count),
+          },
+        ],
+      });
+    };
+
+    const fetchBestSellPerBrand = async () => {
+      var response = await fetch(
+        `${url}/bibine/statistique/brand/sell`,
+        statFetchOptions
+      );
+      response = await response.json();
+      const responseData = response as any;
+      const { data } = responseData;
+      setBestSellPerBrand({
+        labels: data.map((d: any) => d.label),
+        datasets: [
+          {
+            label: "Sales Data",
+            backgroundColor: [
+              "rgba(75, 192, 192, 0.2)",
+              "#f49090a1",
+              "#2e99a099",
+              "#018a00d9",
+              "#e97123a1",
+            ],
+            borderColor: "rgba(75, 192, 192, 1)",
+            borderWidth: 1,
+            data: data.map((d: any) => d.count),
+          },
+        ],
+      });
+    };
+
+    const fetchDatas = async () => {
+      await fetchSellPerBrand();
+      await fetchBestSellPerBrand();
+      setGraphLoaded(true);
+    };
+
+    fetchDatas();
+  }, []);
 
   return (
     <>
@@ -99,6 +188,16 @@ const Brands: FunctionComponent = () => {
         >
           Ajouter
         </button>
+        <div className="graph">
+          <div className="graph-container sell-per-item">
+            <div className="title">Vente par marque</div>
+            {graphLoaded && <Bar data={sellPerBrand} />}
+          </div>
+          <div className="graph-container sell-per-item">
+            <div className="title">Meilleures ventes par marque</div>
+            {graphLoaded && <Bar data={bestSellPerBrand} />}
+          </div>
+        </div>
         <AnimatePresence>
           {page === "add-form" && (
             <BrandPostForm
