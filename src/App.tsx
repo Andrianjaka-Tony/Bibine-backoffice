@@ -1,7 +1,7 @@
 import "./Reset.scss";
 import "./Field.scss";
 
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Sidebar from "./components/sidebar/Sidebar";
 import Category from "./pages/Category";
 import Brand from "./pages/Brand";
@@ -10,16 +10,17 @@ import Engine from "./pages/Engine";
 import Maintain from "./pages/Maintain";
 import Color from "./pages/Color";
 import { AnimatePresence } from "framer-motion";
+import Login from "./pages/Login";
 
 function App() {
   const location = useLocation();
 
   return (
     <>
-      <Sidebar />
-      <AnimatePresence mode="wait">
+      {location.pathname !== "/" && <Sidebar />}
+      <AnimatePresence mode="wait" initial={false}>
         <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Navigate to={"/dashboard"} />} />
+          <Route path="/" element={<Login />} />
           <Route path="/category" element={<Category />} />
           <Route path="/color" element={<Color />} />
           <Route path="/type" element={<Type />} />
