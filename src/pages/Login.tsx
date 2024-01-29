@@ -8,8 +8,8 @@ import Transition from "../components/transition/Transition";
 const Login = () => {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [email, setEmail] = useState<string>("jean@gmail.com");
+  const [password, setPassword] = useState<string>("popopo");
   const [message, setMessage] = useState<string>("");
 
   const handleSubmit = (event: FormEvent) => {
