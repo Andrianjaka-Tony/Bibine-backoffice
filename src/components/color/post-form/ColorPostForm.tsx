@@ -1,13 +1,41 @@
-import { FunctionComponent, MouseEventHandler, useState } from "react";
+import {
+  Dispatch,
+  FormEvent,
+  FunctionComponent,
+  MouseEventHandler,
+  SetStateAction,
+  useState,
+} from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { motion } from "framer-motion";
+import storage from "../../../helper/storage";
+import url from "../../../helper/api";
 
 interface Props {
   onClose: MouseEventHandler;
+  setPage: Dispatch<SetStateAction<string>>;
 }
 
-const ColorPostForm: FunctionComponent<Props> = ({ onClose }) => {
+const ColorPostForm: FunctionComponent<Props> = ({ onClose, setPage }) => {
   const [nom, setNom] = useState<string>("");
+
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+
+    fetch(`${url}/bibine/colors`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem(storage.token),
+      },
+      body: JSON.stringify({ nom }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        setPage("list");
+      });
+  };
 
   return (
     <motion.div
@@ -16,7 +44,7 @@ const ColorPostForm: FunctionComponent<Props> = ({ onClose }) => {
       exit={{ opacity: 0 }}
       className="modal-form"
     >
-      <form className="form">
+      <form onSubmit={handleSubmit} className="form">
         <h1 className="title">Ajouter une couleur</h1>
         <div style={{ marginTop: "10px" }} className="input">
           <label htmlFor="name-input">Nom</label>

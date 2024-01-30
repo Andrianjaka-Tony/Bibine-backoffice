@@ -36,7 +36,7 @@ const Colors: FunctionComponent = () => {
         }
         setArrayPages(array);
       });
-  }, []);
+  }, [page]);
 
   useEffect(() => {
     fetch(
@@ -50,7 +50,7 @@ const Colors: FunctionComponent = () => {
         setData(response.data);
         setLoaded(true);
       });
-  }, [activePage]);
+  }, [activePage, page]);
 
   return (
     <>
@@ -104,6 +104,7 @@ const Colors: FunctionComponent = () => {
               onClose={() => {
                 setPage("list");
               }}
+              setPage={setPage}
             />
           )}
         </AnimatePresence>

@@ -59,7 +59,7 @@ const Brands: FunctionComponent = () => {
         }
         setArrayPages(array);
       });
-  }, []);
+  }, [page]);
 
   useEffect(() => {
     fetch(
@@ -152,7 +152,6 @@ const Brands: FunctionComponent = () => {
               <tr>
                 <td width="100px">Id</td>
                 <td width="250px">Nom</td>
-                <td width="250px">Etat</td>
               </tr>
             </thead>
             <tbody>

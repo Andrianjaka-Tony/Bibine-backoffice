@@ -36,7 +36,7 @@ const Engines: FunctionComponent = () => {
         }
         setArrayPages(array);
       });
-  }, []);
+  }, [page]);
 
   useEffect(() => {
     fetch(
@@ -50,7 +50,7 @@ const Engines: FunctionComponent = () => {
         setData(response.data);
         setLoaded(true);
       });
-  }, [activePage]);
+  }, [activePage, page]);
 
   return (
     <>
@@ -104,6 +104,7 @@ const Engines: FunctionComponent = () => {
               onClose={() => {
                 setPage("list");
               }}
+              setPage={setPage}
             />
           )}
         </AnimatePresence>

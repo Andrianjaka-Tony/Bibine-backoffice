@@ -59,7 +59,7 @@ const Typez: FunctionComponent = () => {
         }
         setArrayPages(array);
       });
-  }, []);
+  }, [page]);
 
   useEffect(() => {
     fetch(
@@ -73,7 +73,7 @@ const Typez: FunctionComponent = () => {
         setData(response.data);
         setLoaded(true);
       });
-  }, [activePage]);
+  }, [activePage, page]);
 
   useEffect(() => {
     const fetchSellPerType = async () => {
@@ -203,6 +203,7 @@ const Typez: FunctionComponent = () => {
               onClose={() => {
                 setPage("list");
               }}
+              setPage={setPage}
             />
           )}
         </AnimatePresence>

@@ -22,7 +22,7 @@ const items: Item[] = [
     icon: <MdOutlineAnnouncement />,
   },
   {
-    name: "Coleurs",
+    name: "Couleurs",
     to: "/color",
     icon: <IoIosColorFilter />,
   },
