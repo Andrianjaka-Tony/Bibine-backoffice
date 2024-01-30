@@ -7,6 +7,7 @@ import "./Announce.scss";
 
 const Announce = () => {
   const [invalidAnnounces, setInvalidAnnounces] = useState<any>([]);
+  const [update, setUpdate] = useState<number>(0);
   const [loaded, setLoaded] = useState<boolean>(false);
 
   useEffect(() => {
@@ -26,7 +27,7 @@ const Announce = () => {
     };
 
     fetchDatas();
-  }, []);
+  }, [update]);
 
   return (
     <>
@@ -36,7 +37,11 @@ const Announce = () => {
         {loaded && (
           <div className="announce-container">
             {invalidAnnounces.map((item: any) => (
-              <AnnounceCard announce={item} key={item.id} />
+              <AnnounceCard
+                setUpdate={setUpdate}
+                announce={item}
+                key={item.id}
+              />
             ))}
           </div>
         )}
