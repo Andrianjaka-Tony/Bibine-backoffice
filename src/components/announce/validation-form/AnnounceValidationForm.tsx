@@ -53,7 +53,7 @@ const AnnounceValidationForm: FunctionComponent<Props> = ({
       exit={{ opacity: 0 }}
       className="modal-form"
     >
-      <form onSubmit={handleSubmit} className="form">
+      <form onSubmit={handleSubmit} className="form announce-form">
         <h1 className="title">Valider</h1>
         <div style={{ marginTop: "10px" }} className="input">
           <label htmlFor="commission-input">Commission</label>

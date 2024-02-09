@@ -9,8 +9,12 @@ export interface Maintain {
 const MaintainRow: FunctionComponent<Maintain> = ({ id, nom, state }) => {
   return (
     <tr>
-      <td width="100px">{id}</td>
-      <td width="350px">{nom}</td>
+      <td width="100px" className="column">
+        {id}
+      </td>
+      <td width="350px" className="column">
+        {nom}
+      </td>
     </tr>
   );
 };

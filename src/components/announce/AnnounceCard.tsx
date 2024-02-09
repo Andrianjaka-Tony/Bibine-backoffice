@@ -54,7 +54,7 @@ const AnnounceCard: FunctionComponent<Props> = ({ announce, setUpdate }) => {
           onClick={() => {
             setPage("form");
           }}
-          className="btn btn-add"
+          className="btn btn-add btn"
         >
           Valider l'annonce
         </button>

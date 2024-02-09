@@ -44,7 +44,7 @@ const BrandPostForm: FunctionComponent<Props> = ({ onClose, setPage }) => {
       exit={{ opacity: 0 }}
       className="modal-form"
     >
-      <form onSubmit={handleSubmit} className="form">
+      <form onSubmit={handleSubmit} className="form brand-post-form">
         <h1 className="title">Ajouter une marque</h1>
         <div style={{ marginTop: "10px" }} className="input">
           <label htmlFor="name-input">Nom</label>

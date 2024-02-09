@@ -9,8 +9,12 @@ export interface Color {
 const ColorRow: FunctionComponent<Color> = ({ id, nom, state }) => {
   return (
     <tr>
-      <td width="100px">{id}</td>
-      <td width="250px">{nom}</td>
+      <td width="100px" className="column">
+        {id}
+      </td>
+      <td width="250px" className="column">
+        {nom}
+      </td>
     </tr>
   );
 };
